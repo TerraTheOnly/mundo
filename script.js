@@ -329,5 +329,3 @@ function mostrarPalpite(pais) {
 }
 
 sortearPais();
-
-//comentario da kelsia vai tomar no cu
