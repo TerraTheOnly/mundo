@@ -219,26 +219,26 @@ function formatarTexto(txt) {
     txt = txt.toLowerCase();
 
     const acentosA = ["á", "à", "â", "ã"];
-    acentosA.forEach(function(val) {txt.replace(val, "a");});
-    
+    acentosA.forEach(function (val) { txt.replace(val, "a"); });
+
     const acentosE = ["é", "è", "ê"];
-    acentosE.forEach(function(val) {txt.replace(val, "e");});
+    acentosE.forEach(function (val) { txt.replace(val, "e"); });
 
     const acentosI = ["í", "ì", "î"];
-    acentosI.forEach(function(val) {txt.replace(val, "i");});
+    acentosI.forEach(function (val) { txt.replace(val, "i"); });
 
     const acentosO = ["ó", "ò", "ô", "õ"];
-    acentosO.forEach(function(val) {txt.replace(val, "o");});
+    acentosO.forEach(function (val) { txt.replace(val, "o"); });
 
     const acentosU = ["ú", "ù", "û"];
-    acentosU.forEach(function(val) {txt.replace(val, "u");});
+    acentosU.forEach(function (val) { txt.replace(val, "u"); });
 
     return txt;
 }
 
 //coloca texto no aviso
-function mostrarAviso(msg) {aviso.textContent = msg;}
-function limparAviso() {aviso.textContent = "";}
+function mostrarAviso(msg) { aviso.textContent = msg; }
+function limparAviso() { aviso.textContent = ""; }
 
 //cria um elemento HTML com o conteudo dado
 function criarElemento(tipo, conteudo) {
@@ -259,20 +259,20 @@ function mostrarPreviewPalpite() {
     val = val.trim();
     val = val.toLowerCase();
 
-    if (val == "") {return;}
+    if (val == "") { return; }
 
     let previewCriados = 0;
-    paises.forEach(function(pais) {
+    paises.forEach(function (pais) {
         let testName = pais.name;
         testName = testName.toLowerCase();
 
         if (testName.startsWith(val)) {
-            if (previewCriados >= 5) {return;}
+            if (previewCriados >= 5) { return; }
             previewCriados++;
 
             const novoEl = criarElemento("span", pais.name);
             novoEl.classList.add("previewPalpite-ind")
-            novoEl.addEventListener('click', function() {
+            novoEl.addEventListener('click', function () {
                 inputPalpite.value = pais.name;
                 validarPalpite();
             });
@@ -280,7 +280,7 @@ function mostrarPreviewPalpite() {
         }
     })
 }
-function limparPreviewPalpite() {previewPalpite.innerHTML = "";}
+function limparPreviewPalpite() { previewPalpite.innerHTML = ""; }
 
 function validarPalpite() {
     let val = inputPalpite.value;
@@ -293,14 +293,14 @@ function validarPalpite() {
 
     let ind = 0;
     let existe = false;
-    paises.forEach(function(pais, index) {if (pais.name == val) {ind = index; existe = true;}});
+    paises.forEach(function (pais, index) { if (pais.name == val) { ind = index; existe = true; } });
     if (!existe) {
         mostrarAviso("esse país nao existe parça");
         return;
     }
 
     let jaTentou = false;
-    paisesTentados.forEach(function(pais) {if (pais == val) {jaTentou = true;}})
+    paisesTentados.forEach(function (pais) { if (pais == val) { jaTentou = true; } })
     if (jaTentou) {
         mostrarAviso("tu ja tentou isso ai amigao plmds");
         return;
@@ -317,15 +317,58 @@ function validarPalpite() {
     inputPalpite.value = "";
 }
 
-function mostrarPalpite(pais) {
-    const novoPalpite = criarElemento('span', 
-        "nome:" + pais.name + 
-        " população:" + pais.population + 
-        " área:" + pais.area + 
-        " continente:" + pais.continent + 
-        " tem costa:" + pais.hasCoast
+function mostrarPalpite(paisEscolhido) {
+    const novoPalpite = criarElemento('span',
+        "nome:" + paisEscolhido.name +
+        " população:" + paisEscolhido.population +
+        " área:" + paisEscolhido.area +
+        " continente:" + paisEscolhido.continent +
+        " tem costa:" + paisEscolhido.hasCoast
     );
     palpitesContainer.appendChild(novoPalpite);
+
+
+    let divBase = criarElemento('div', '');
+    divBase.classList.add("palpite")
+
+    let divArea = criarElemento('div', "");
+    divArea.classList.add("palpite-stat")
+    if (paisSecreto.area == paisEscolhido.area) {
+        divBase.classList.add("palpite-stat-certo")
+        divArea.innerHTML = paisEscolhido.area + "ta certo fi";
+    } else if (paisSecreto.area > paisEscolhido.area) {
+        divBase.classList.add("palpite-stat-certo")
+        divArea.innerHTML = paisEscolhido.area + "ta maior fi";
+    } else if (paisSecreto.area < paisEscolhido.area) {
+        divArea.innerHTML = paisEscolhido.area + " ta menor fi";
+    }
+    divBase.appendChild(divArea);
+
+    let divPopulation = criarElemento('div', '');
+    divPopulation.classList.add("palpite-stat")
+    if (paisSecreto.population == paisEscolhido.population) {
+        divBase.classList.add("palpite-stat-certo")
+        divPopulation.innerHTML = paisEscolhido.population + "ta certo fi";
+    } else if (paisSecreto.population > paisEscolhido.population) {
+
+    } else if (paisSecreto.population < paisEscolhido.population) {
+
+    }
+
+
+    if (paisSecreto.continent == paisEscolhido.continent) {
+
+    } else{
+
+    }
+
+    if (paisSecreto.hasCoast == paisEscolhido.hasCoast) {
+
+    } else{
+
+    }
+
+    palpitesContainer.appendChild(divBase);
 }
 
 sortearPais();
