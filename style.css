@@ -16,7 +16,7 @@ nav {
     box-sizing: border-box;
 }
 main {
-    width: 60%;
+    width: 70%;
     margin: auto;
 
     padding: 5%;
@@ -85,5 +85,10 @@ input {
     border: 1px solid #c4a4ff;
     
     color: #ee1330;
+}
+
+#palpites-container {
+    display: flex;
+    flex-flow: column-reverse nowrap;
 }
 

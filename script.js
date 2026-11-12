@@ -201,15 +201,19 @@ const paises = [
     { "name": "Vanuatu", "population": 330000, "area": 12189, "continent": "Oceania", "hasCoast": true }
 ]
 const paisesTentados = [];
+let paisSecreto = {};
 
 const btnPalpite = document.getElementById("btn-palpite");
 const inputPalpite = document.getElementById("input-palpite");
 const previewPalpite = document.getElementById("preview-container");
 const aviso = document.getElementById("aviso");
+const palpitesContainer = document.getElementById("palpites-container");
 
 btnPalpite.addEventListener('click', validarPalpite)
 inputPalpite.addEventListener('input', mostrarPreviewPalpite)
 
+//deixa texto minusculo e sem acentos
+//feito pra pesquisa de nomes
 function formatarTexto(txt) {
     txt = txt.trim();
     txt = txt.toLowerCase();
@@ -232,13 +236,20 @@ function formatarTexto(txt) {
     return txt;
 }
 
+//coloca texto no aviso
 function mostrarAviso(msg) {aviso.textContent = msg;}
 function limparAviso() {aviso.textContent = "";}
 
+//cria um elemento HTML com o conteudo dado
 function criarElemento(tipo, conteudo) {
     const el = document.createElement(tipo);
     el.innerHTML = conteudo;
     return el;
+}
+
+function sortearPais() {
+    paisSecreto = paises[Math.floor(Math.random() * paises.length)];
+    console.log(paisSecreto);
 }
 
 function mostrarPreviewPalpite() {
@@ -280,8 +291,9 @@ function validarPalpite() {
         return;
     }
 
+    let ind = 0;
     let existe = false;
-    paises.forEach(function(pais) {if (pais.name == val) {existe = true;}});
+    paises.forEach(function(pais, index) {if (pais.name == val) {ind = index; existe = true;}});
     if (!existe) {
         mostrarAviso("esse país nao existe parça");
         return;
@@ -297,8 +309,23 @@ function validarPalpite() {
     limparAviso();
     limparPreviewPalpite();
 
+    mostrarPalpite(paises[ind]);
+
     console.log("validou")
     paisesTentados.push(val);
 
     inputPalpite.value = "";
 }
+
+function mostrarPalpite(pais) {
+    const novoPalpite = criarElemento('span', 
+        "nome:" + pais.name + 
+        " população:" + pais.population + 
+        " área:" + pais.area + 
+        " continente:" + pais.continent + 
+        " tem costa:" + pais.hasCoast
+    );
+    palpitesContainer.appendChild(novoPalpite);
+}
+
+sortearPais();
