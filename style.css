@@ -5,15 +5,24 @@
 
 body {
     background-color: rgb(22, 22, 48);
-    color: antiquewhite;
+    color: #bedbf3;
 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 nav {
     display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 
     padding: 1%;
     box-sizing: border-box;
+    color: #bedbf3;
+}
+.logo-globo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: -6px;
 }
 main {
     width: 70%;
@@ -23,10 +32,13 @@ main {
 }
 
 #navbar {
-    float: right;
+    margin-left: auto;
 }
 .navbar-el {
     margin: 1%;
+    white-space: nowrap;
+    font-family:'Courier New', Courier, monospace;
+    color: #bedbf3;
 }
 
 input {
@@ -37,11 +49,13 @@ input {
     box-sizing: border-box;
 
     background-color: rgb(22, 22, 48);
-    border-radius: 8px;
-    border: 1px solid #c4a4ff;
+    border-radius: 20px;
+    border: 1px solid #bedbf3;
 
     color: antiquewhite;
 }
+
+
 #preview-container {
     width: 60%;
     height: 36px;
@@ -67,28 +81,29 @@ input {
     background-color: rgb(41, 20, 92);
 }
 #btn-palpite {
-    width: 30%;
+    width: 13%;
     height: 36px;
 
-    border-radius: 8px;
-    border: 1px solid #c4a4ff;
+    border-radius: 20px;
+    border: 1px solid #1a8456;
+    background-color: #1a8456;
+    color: #bedbf3;
+
 }
 
 #aviso-container {
     min-width: 100%;
 }
-#aviso {
-    padding: 1%;
-    box-sizing: border-box;
-
-    border-radius: 8px;
-    border: 1px solid #c4a4ff;
-    
+#aviso {  
     color: #ee1330;
 }
 
 #palpites-container {
     display: flex;
     flex-flow: column-reverse nowrap;
+    
 }
+
+
+
 
