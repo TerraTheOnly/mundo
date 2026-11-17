@@ -17,6 +17,7 @@ nav {
     padding: 1%;
     box-sizing: border-box;
     color: #bedbf3;
+     border-bottom: 3px solid #bedbf3;
 }
 .logo-globo {
     width: 60px;
@@ -53,7 +54,14 @@ input {
     border: 1px solid #bedbf3;
 
     color: antiquewhite;
+    font-family: times new roman;
+    
 }
+
+input::placeholder {
+    font-style: italic;
+}
+
 
 
 #preview-container {
@@ -104,6 +112,14 @@ input {
     
 }
 
+.nomes {
+    display: flex;
+    justify-content:space-evenly;
+    gap: -20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #bedbf3;
+}
 
 
 
