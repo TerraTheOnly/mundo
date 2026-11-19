@@ -318,15 +318,14 @@ function validarPalpite() {
 }
 
 function mostrarPalpite(paisEscolhido) {
+    let div, quase;
 
     let divBase = criarElemento('div', '');
     divBase.classList.add("palpite");
 
-
     let divNome = criarElemento('div', paisEscolhido.name);
     divNome.classList.add("palpite-stat");
     divBase.appendChild(divNome);
-
 
     let divContinente = criarElemento('div', paisEscolhido.continent);
     divContinente.classList.add("palpite-stat");
@@ -339,7 +338,6 @@ function mostrarPalpite(paisEscolhido) {
 
     divBase.appendChild(divContinente);
 
-
     let divPopulation = criarElemento('div', "");
     divPopulation.classList.add("palpite-stat");
 
@@ -351,41 +349,36 @@ function mostrarPalpite(paisEscolhido) {
     } else if (paisEscolhido.population >= 1000) {
         popFormatada = Math.round(paisEscolhido.population / 1000) / 10 + "k"
     }
-    
-    if (paisEscolhido.population == paisSecreto.population) {
-        divPopulation.classList.add("palpite-stat-certo");
-        divPopulation.innerHTML = popFormatada;
-    } else if (paisEscolhido.population > paisSecreto.population) {
-        divPopulation.classList.add("palpite-stat-errado");
-        divPopulation.innerHTML = popFormatada + " ↓";
-    } else {
-        divPopulation.classList.add("palpite-stat-errado");
-        divPopulation.innerHTML = popFormatada + " ↑";
-    }
+
+    diff = Math.abs(paisEscolhido.population - paisSecreto.population);
+    quase = diff < (paisSecreto.population / 2);
+    if (paisEscolhido.population == paisSecreto.population) {divPopulation.innerHTML = popFormatada;} 
+    else if (paisEscolhido.population > paisSecreto.population) {divPopulation.innerHTML = popFormatada + " ↓";} 
+    else {divPopulation.innerHTML = popFormatada + " ↑";}
+
+    if (paisEscolhido.population == paisSecreto.population) {divPopulation.classList.add("palpite-stat-certo");}
+    else if (quase) {divPopulation.classList.add("palpite-stat-quase");}
+    else {divPopulation.classList.add("palpite-stat-errado");}
 
     divBase.appendChild(divPopulation);
-
 
     let divArea = criarElemento('div', "");
     divArea.classList.add("palpite-stat");
 
-    let areaFormatada = paisEscolhido.area;
-    if (paisEscolhido.area >= 1000000) {
-        areaFormatada = Math.round(paisEscolhido.area / 100000) / 10 + "mi"
-    } else if (paisEscolhido.area >= 1000) {
-        areaFormatada = Math.round(paisEscolhido.area / 1000) / 10 + "k"
-    }
+    diff = Math.abs(paisEscolhido.area - paisSecreto.area);
+    quase = diff < (paisSecreto.area / 2);
 
-    if (paisEscolhido.area == paisSecreto.area) {
-        divArea.classList.add("palpite-stat-certo");
-        divArea.innerHTML = areaFormatada;
-    } else if (paisEscolhido.area > paisSecreto.area) {
-        divArea.classList.add("palpite-stat-errado");
-        divArea.innerHTML = areaFormatada + " ↓";
-    } else {
-        divArea.classList.add("palpite-stat-errado");
-        divArea.innerHTML = areaFormatada + " ↑";
-    }
+    let areaFormatada = paisEscolhido.area;
+    if (paisEscolhido.area >= 1000000) {areaFormatada = Math.round(paisEscolhido.area / 100000) / 10 + "mi"} 
+    else if (paisEscolhido.area >= 1000) {areaFormatada = Math.round(paisEscolhido.area / 1000) / 10 + "k"}
+
+    if (paisEscolhido.area == paisSecreto.area) {divArea.innerHTML = areaFormatada;} 
+    else if (paisEscolhido.area > paisSecreto.area) {divArea.innerHTML = areaFormatada + " ↓";} 
+    else {divArea.innerHTML = areaFormatada + " ↑";}
+
+    if (paisEscolhido.area == paisSecreto.area) {divArea.classList.add("palpite-stat-certo");}
+    else if (quase) {divArea.classList.add("palpite-stat-quase");}
+    else {divArea.classList.add("palpite-stat-errado");}
 
     divBase.appendChild(divArea);
 

@@ -183,11 +183,18 @@ input::placeholder {
     align-items: center;
     border-radius: 8px;
     background-color: #252545;
+
+    box-sizing: border-box;
+    padding: 2.5%;
 }
 
 .palpite-stat-certo {
-    background-color: green;
+    background-color: rgb(3, 165, 84);
 }
 .palpite-stat-errado {
-    background-color: red;
+    background-color: rgb(255, 0, 55);
+}
+.palpite-stat-quase {
+    background-color: rgb(255, 187, 0);
+    color: #252545;
 }
