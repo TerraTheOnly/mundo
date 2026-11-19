@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <title>Mundo</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <nav>
-            <img class="logo-globo" src="globo.png" alt="Globo terrestre">
-            <h1>MUNDO</h1>
-            <div id="navbar">
-                <span class="navbar-el">Como Jogar</span>
-            </div>
-        </nav>
-        <main>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Mundo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <img class="logo-globo" src="globo.png" alt="Mundo">
+        <h1>MUNDO</h1>
+        <!--<div id="navbar">
+            <span class="navbar-el">Como Jogar</span>
+        </div>-->
+    </nav>
+    <main>
+        <div class="input-wrapper">
             <input id="input-palpite" type="text" value="" placeholder="Digite um país...">
             <div id="preview-container"></div>
-            <button id="btn-palpite">Tentar palpite</button>
-            <div id="aviso-container"><span id="aviso"></span></div>
-            <div id="palpites-container"></div>
-        </main>
+        </div>
+        <button id="btn-palpite">Tentar palpite</button>
+    </main>
+    <div id="preview-container"></div>
+    <div class="aviso-wrapper"><span id="aviso"></span></div>
 
     <div class="nomes">
         <span>País</span>
@@ -29,8 +33,10 @@
         <span>População</span>
         <span>Área (km²)</span>
         <span>Tem costa?</span>
-     </div>
+    </div>
+    <div id="palpites-container"></div>
 
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
+
 </html>
