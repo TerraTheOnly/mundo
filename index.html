@@ -3,20 +3,20 @@
 <html lang="pt-BR">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mundo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav>
-        <img class="logo-globo" src="globo.png" alt="Mundo">
+    <header>
+        <img class="logo-globo" src="globo.png" alt="" width="48" height="48">
         <h1>MUNDO</h1>
         <!--<div id="navbar">
             <span class="navbar-el">Como Jogar</span>
         </div>-->
-    </nav>
+    </header>
     <main>
         <div class="input-wrapper">
             <input id="input-palpite" type="text" value="" placeholder="Digite um país...">
@@ -24,6 +24,7 @@
         </div>
         <button id="btn-palpite">Tentar palpite</button>
     </main>
+    <span id="tentativas">Tentativas: 1</span>
     <span id="aviso"></span>
 
     <div class="nomes">
@@ -34,6 +35,23 @@
         <span>Tem costa?</span>
     </div>
     <div id="palpites-container"></div>
+
+    <dialog id="popup-vitoria" aria-labelledby="vitoria-titulo">
+        <h2 id="vitoria-titulo">Você acertou!</h2>
+        <p id="vitoria-pais"></p>
+        <p id="vitoria-tentativas"></p>
+        <dl id="vitoria-dados">
+            <dt>Continente</dt>
+            <dd id="vitoria-continente"></dd>
+            <dt>População</dt>
+            <dd id="vitoria-populacao"></dd>
+            <dt>Área</dt>
+            <dd id="vitoria-area"></dd>
+            <dt>Tem costa?</dt>
+            <dd id="vitoria-costa"></dd>
+        </dl>
+        <button id="btn-fechar-vitoria">Jogar Novamente</button>
+    </dialog>
 
     <script src="script.js"></script>
 </body>
