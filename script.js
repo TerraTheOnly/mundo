@@ -295,8 +295,9 @@ function validarPalpite() {
 
     inputPalpite.value = "";
     
-    if (paisEscolhido.name == paisSecreto.name) { mostrarVitoria(paisEscolhido); }
-    else {
+    if (paisEscolhido.name == paisSecreto.name) { 
+        mostrarVitoria(paisEscolhido); 
+    } else {
         tentativas++;
         atualizarTentativas();
     }
@@ -317,7 +318,7 @@ function mostrarVitoria(pais) {
     inputPalpite.disabled = true;
     btnPalpite.disabled = true;
 
-    setTimeout(function () { winDialog.showModal(); }, 50); // pequena pausa para o jogador ver a linha toda verde antes do popup 
+    winDialog.showModal();
 }
 
 function mostrarPalpite(paisEscolhido) {
